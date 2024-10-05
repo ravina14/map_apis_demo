@@ -64,6 +64,14 @@
 	<string>This app requires access to your location to provide nearby places.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>This app requires access to your location even when in the background.</string>
-	
+	<key>CFBundleURLTypes</key>
+	<array>
+	<dict>
+		<key>CFBundleURLSchemes</key>
+		<array>
+		<string>com.googleusercontent.apps.1015013093320-rf1fg03q9pa80cv4suhnbvjmi3r6nqif</string>
+		</array>
+	</dict>
+	</array>
 </dict>
 </plist>
