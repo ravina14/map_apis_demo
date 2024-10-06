@@ -18,26 +18,27 @@ class CustomNetworkImage extends StatelessWidget {
   final String errorImageName;
   @override
   Widget build(BuildContext context) {
-      return CachedNetworkImage(
-        imageUrl: imageUrl,
-        imageBuilder: (context, imageProvider) {
-          return Image(
-            image: imageProvider,
-            fit: fit,
-          )
-          .cornerRadius(cornerRadius.r)
-          .h(height.h)
-          .w(width.w);
+      return Image.network(
+        imageUrl,
+        width: width.w,
+        height: height.h,
+        loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+          if (loadingProgress == null) {
+            return child; // The image has loaded
+          }
+          return Center(
+            child: CircularProgressIndicator(
+              value: loadingProgress.expectedTotalBytes != null
+                  ? loadingProgress.cumulativeBytesLoaded / (loadingProgress.expectedTotalBytes ?? 1)
+                  : null,
+            ),
+          ); // Show the loading indicator while the image is loading
         },
-        progressIndicatorBuilder: (context, url, downloadProgress) => 
-            CircularProgressIndicator(value: downloadProgress.progress),
-        errorWidget: (context, url, error) => 
-            Image.asset(
-              errorImageName,
-              fit: BoxFit.cover,
-            )
-            .h(height.h)
-            .w(width.w),
-    );
+        errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
+          return const Center(
+            child: Icon(Icons.error), // Placeholder in case of an error
+          );
+        },
+    ).cornerRadius(cornerRadius.r);
   }
 }

@@ -38,7 +38,7 @@ class _LoginState extends State<Login> {
               CustomButton(
                   title: "Google Login",
                   onPressed: () => {
-                        loginViewModel.loginWithGoogle(),
+                        loginViewModel.loginWithGoogle(context),
                       }).centered().p(50.0.r),
             ],
           ).centered(),

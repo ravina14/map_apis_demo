@@ -22,8 +22,8 @@ class _PlaceListState extends State<PlaceList> {
     });
 
     var latlng = "${_currentPosition!.latitude},${_currentPosition!.longitude}";
-    placeViewModel.getCurrentAddress(latlng);
-    placeViewModel.getNearByPlaces("",latlng);
+    placeViewModel.getCurrentAddress(context,latlng);
+    placeViewModel.getNearByPlaces(context,"",latlng);
   }
 
 _onSearchChanged() {
@@ -32,7 +32,7 @@ _onSearchChanged() {
     final search = placeViewModel.searchController.text.trim();
       if (search.isNotEmpty) {
         var latlng = "${_currentPosition!.latitude},${_currentPosition!.longitude}";
-         placeViewModel.getNearByPlaces(search,latlng);
+         placeViewModel.getNearByPlaces(context,search,latlng);
       }
     });
   }
@@ -77,6 +77,8 @@ _onSearchChanged() {
           20.h.heightBox,
           CustomTextFormField(
               hintText: "Search",
+              isShowLable: true,
+              prefixIcomnName: AppAssets.icSearch,
               controller: placeViewModel.searchController,
             ),
           20.h.heightBox,

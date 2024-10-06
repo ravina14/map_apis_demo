@@ -6,9 +6,11 @@ class PlaceDetailViewModel {
   VelocityBloc<PlaceDistanceMatrixModel> placeDistanceMatrixModelBloc = VelocityBloc<PlaceDistanceMatrixModel>(PlaceDistanceMatrixModel());
   PlaceDetailViewModel({required this.repository});
 
-  getTimeDistance(String destinations,String origins) async{
+  getTimeDistance(BuildContext context,String destinations,String origins) async{
+    showLoading(context);
     try{
       var response = await repository.placeRepo.getTimeDistance(destinations,origins);
+          hideLoading(context);
           if(response.status == "OK"){
               debugPrint("response get success");
               placeDistanceMatrixModelBloc.onUpdateData(response);
@@ -16,7 +18,9 @@ class PlaceDetailViewModel {
               debugPrint(response.errorMessage);
           }
     }on ApiException catch (e){
-      debugPrint(e.message);
+        hideLoading(context);
+        debugPrint(e.message);
+        VxToast.show(context, msg: "Error:${e.message}");
     }
   }
 }

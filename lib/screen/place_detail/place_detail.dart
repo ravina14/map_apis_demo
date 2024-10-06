@@ -171,7 +171,7 @@ class _PlaceDetailState extends State<PlaceDetail> {
         CustomButton(
           title: "Get Directions",
           onPressed: () => {
-            placeDetailViewModel.getTimeDistance(
+            placeDetailViewModel.getTimeDistance(context,
                 widget.result.vicinity!, widget.currentLocation),
           },
         ).p(20.0.r),

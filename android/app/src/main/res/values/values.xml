@@ -1,0 +1,8 @@
+<resources>
+    <string name="default_web_client_id" translatable="false">1015013093320-6rn8dlgcpcmako0j73jvaue3j6mj6o9n.apps.googleusercontent.com</string>
+    <string name="project_id" translatable="false">mapapisdemo-6c324</string>
+     <string name="firebase_database_url" translatable="false">https://mapapisdemo-6c324.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">1015013093320</string>
+    <string name="google_api_key" translatable="false">AIzaSyAGDhdbwJfRXyr4qN9kut8ye-B08kmwmrU</string>
+    <string name="google_app_id" translatable="false">1:1015013093320:android:5ada62e968ba80e38b5afd</string>
+</resources>

@@ -4,19 +4,23 @@ class LoginViewModel {
 
 VelocityBloc<bool> googleLoginBloc = VelocityBloc<bool>(false);
 
-  Future<void> loginWithGoogle() async {
+  Future<void> loginWithGoogle(BuildContext context) async {
+    showLoading(context);
     try {
       final userCredential = await GoogleAuthService.shared.signinWithGoogle();
+      hideLoading(context);
       if (userCredential.user != null) {
-         debugPrint("Error during Google login: ${userCredential.user!.displayName}");
-        googleLoginBloc.onUpdateData(true);
+          debugPrint("Error during Google login: ${userCredential.user!.displayName}");
+          googleLoginBloc.onUpdateData(true);
       } else {
         googleLoginBloc.onUpdateData(false);
       }
     } catch (e) {
-      // Handle exceptions and log error if needed
-      debugPrint("Error during Google login: $e");
-      googleLoginBloc.onUpdateData(false);
+      hideLoading(context);
+        // Handle exceptions and log error if needed
+        debugPrint("Error during Google login: $e");
+        googleLoginBloc.onUpdateData(false);
+        VxToast.show(context, msg: "Error during Google login: $e");
     }
   }
   
