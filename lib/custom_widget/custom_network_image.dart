@@ -4,7 +4,7 @@ class CustomNetworkImage extends StatelessWidget {
   const CustomNetworkImage({
     super.key, 
     required this.imageUrl, 
-    this.cornerRadius = 20.0, 
+    this.cornerRadius = 0.0, 
     this.height = 85.0, 
     this.width = 85.0, 
     this.fit = BoxFit.cover, 
@@ -22,6 +22,7 @@ class CustomNetworkImage extends StatelessWidget {
         imageUrl,
         width: width.w,
         height: height.h,
+        fit: BoxFit.cover,
         loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
           if (loadingProgress == null) {
             return child; // The image has loaded

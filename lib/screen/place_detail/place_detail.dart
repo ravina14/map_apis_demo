@@ -39,7 +39,6 @@ class _PlaceDetailState extends State<PlaceDetail> {
                 color: AppColor.secondaryColor,
                 child: CustomNetworkImage(
                     imageUrl: (widget.result.photos != null && widget.result.photos!.isNotEmpty )?Utility.getImagePlase(widget.result.photos![0].photoReference!) : AppAssets.icPlaceholder,
-                    cornerRadius: 25.0,
                     height: 85.0,
                     width: 85.0,
                 ),
