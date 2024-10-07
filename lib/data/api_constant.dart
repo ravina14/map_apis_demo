@@ -2,8 +2,7 @@ class ApiConstant {
   ApiConstant._();
   
   static const String  mapApiUrl = "https://maps.googleapis.com/maps/api/";
-  static const String  mapKey = "AIzaSyBsV70O6PtaIqwqZcYwK_tIqmnYt_46hu8";
-
+  static const String  mapKey = "";//Add your Google cloud key here...
   static const String nearBySearch = "place/nearbysearch/json?";
   static const String distanceMatrix = "distancematrix/json?";
   static const String geocode = "geocode/json?";
